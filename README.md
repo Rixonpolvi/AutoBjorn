@@ -11,11 +11,11 @@ $ brew install python3.7
 ```
 > Install dependencies
 ```
-pip install --requirement requirements.txt
+$ pip install --requirement requirements.txt
 ```
 
-> Windows
-
+Windows
+> Download and install python3.7
 ```
 https://www.python.org/downloads/release/python-373/
 ```
@@ -37,6 +37,11 @@ optional arguments:
   -h, --help            show this help message and exit
   -o OUTFILE, --outfile OUTFILE
                         Output CSV file
+```
+Ex.
+```
+$ python autoBjorn.py input.csv
+$ python autoBjorn.py input.csv -o output.csv
 ```
 
 
