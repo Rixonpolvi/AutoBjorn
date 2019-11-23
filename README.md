@@ -18,6 +18,21 @@ $ brew install fvcproductions
 $ npm install
 $ bower install
 ```
+### How to Use
+'''usage: autoBjorn.py [-h] [-o OUTFILE] infile
+
+AutoBjorn image comparison
+
+positional arguments:
+  infile                Input CSV file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o OUTFILE, --outfile OUTFILE
+                        Output CSV file
+'''
+
+
 ### Explanation
 
 For given input CSV file containing 2 fields containing image paths with N records - 
