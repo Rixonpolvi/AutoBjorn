@@ -33,15 +33,15 @@ def parse_arg():
 
 #Structural Similarity Index (SSI)  --> -1 to 1 (Different to same)
 #Bjorn Similarity Index (BSI)       -->  0 to 1 (Same to different)
-#Normalize -1 to 1 --> 1 to 0 and subtract from 1 to flip
-#new = old - min/max - min
-def normalize(bjorn_value):
-    return (1 - (bjorn_value + 1) / 2)
+#Normalize [-1,1] --> [1,0] and subtract from 1 to flip
+#new = 1 - (old - min/max - min)
+def normalize(ssi):
+    return (1 - (ssi + 1) / 2)
 
 
 #Compare 2 image files
 #Return ssi value and time taken
-def compare_images(imageA, imageB): #, title, savefile):
+def compare_images(imageA, imageB):
     ssi_start = time.time()
     ssi = metrics.structural_similarity(imageA, imageB, multichannel=True)
     ssi_finish = time.time()
@@ -51,12 +51,13 @@ def compare_images(imageA, imageB): #, title, savefile):
 
 
 #Load images for comparison
-#gif not working with opencv
+#.gif not working with opencv
 #image converstion using pillow.Image
 def load_image(path):
     if path.suffix == '.gif':
-        Image.open(path).save(f'{path.stem}.png', 'PNG')
-        image = cv2.imread(f'{path.stem}.png', 1)
+        convert_to_png = path.parent / path.stem
+        Image.open(path).save(f'{str(convert_to_png + "_tmp"}.png', 'PNG')
+        image = cv2.imread(f'{str(convert_to_png + "_tmp"}.png', 1)
     else:
         image = cv2.imread(str(path), 1)
     return image 
@@ -66,8 +67,6 @@ def load_image(path):
 #Write to args.outfile
 #N/A values if images do not exist on the filesystem
 def read_write(args):
-    bsi = ''
-    elapsed_time = ''
     completed = 0
     failures = 0
 
@@ -88,6 +87,11 @@ def read_write(args):
                 
                 ssi, elapsed_time = compare_images(image1, image2)
                 bsi = normalize(ssi)
+                
+                #For differences that are undetectable to the human eye (same image, diff format)
+                if bsi < 0.03:
+                    bsi = 0
+
                 writer.writerow((image1_path, image2_path, f'{bsi:.2f}', f'{elapsed_time:.3f}'))
                 completed += 1
             else:
