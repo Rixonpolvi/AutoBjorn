@@ -18,12 +18,13 @@ $ brew install fvcproductions
 $ npm install
 $ bower install
 ```
+### Explanation
 
 For given input CSV file containing 2 fields containing image paths with N records - 
 - Read path of each image
 - Open each image using OpenCV
 - Compare the two images using scikit-image's Structural Similarity Index function
-- Normalize -1 to 1 SSI value to 0 to 1 Bjorn value
+- Normalize [-1,1] SSI value to [0,1] Bjorn value
 - Record time taken for SSI comparison
-- Output image1, image2, Bjorn value and elapsed comparison time to and output CSV
+- Output - image1, image2, Bjorn value, elapsed comparison time
 
