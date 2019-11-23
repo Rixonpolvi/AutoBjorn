@@ -19,7 +19,7 @@ $ npm install
 $ bower install
 ```
 ### How to Use
-'''usage: autoBjorn.py [-h] [-o OUTFILE] infile
+```usage: autoBjorn.py [-h] [-o OUTFILE] infile
 
 AutoBjorn image comparison
 
@@ -30,7 +30,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -o OUTFILE, --outfile OUTFILE
                         Output CSV file
-'''
+```
 
 
 ### Explanation
