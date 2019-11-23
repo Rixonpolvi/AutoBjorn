@@ -2,20 +2,24 @@
 Calculate Bjorn Similarity Index Value of 2 Images
 
 ### Setup
-Install python3.7
 
-> Mac
+Mac
+> Install python3.7
 
 ```shell
 $ brew install python3.7
 ```
+> Install dependencies
+```
+pip install --requirement requirements.txt
+```
+
 > Windows
 
 ```
 https://www.python.org/downloads/release/python-373/
 ```
-
-Install dependencies
+> Install dependencies
 ```
 pip install --requirement requirements.txt
 ```
