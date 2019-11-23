@@ -2,22 +2,22 @@
 Calculate Bjorn Similarity Index Value of 2 Images
 
 ### Setup
+Install python3.7
 
-- If you want more syntax highlighting, format your code like this:
-
-> update and install this package first
-
-```shell
-$ brew update
-$ brew install fvcproductions
-```
-
-> now install npm and bower packages
+> Mac
 
 ```shell
-$ npm install
-$ bower install
+$ brew install python3.7
 ```
+> Windows
+
+```https://www.python.org/downloads/release/python-373/
+```
+
+Install dependencies
+```pip install --requirement requirements.txt
+```
+
 ### How to Use
 ```usage: autoBjorn.py [-h] [-o OUTFILE] infile
 
