@@ -11,15 +11,18 @@ $ brew install python3.7
 ```
 > Windows
 
-```https://www.python.org/downloads/release/python-373/
+```
+https://www.python.org/downloads/release/python-373/
 ```
 
 Install dependencies
-```pip install --requirement requirements.txt
+```
+pip install --requirement requirements.txt
 ```
 
-### How to Use
-```usage: autoBjorn.py [-h] [-o OUTFILE] infile
+### Use
+```
+usage: autoBjorn.py [-h] [-o OUTFILE] infile
 
 AutoBjorn image comparison
 
