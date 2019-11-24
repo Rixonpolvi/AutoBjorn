@@ -16,12 +16,23 @@ $ pip install --requirement requirements.txt
 
 Windows
 > Download and install python3.7
-```
 https://www.python.org/downloads/release/python-373/
+
+> Install virtualenv
+```
+pip install virtualenv
+```
+> Start virtualenv
+```
+virtualenv env
+```
+> Activate virtualenv
+```
+\path\to\env\Scripts\activate
 ```
 > Install dependencies
 ```
-pip install --requirement requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Usage
