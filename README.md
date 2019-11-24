@@ -9,6 +9,18 @@ Mac
 ```
 $ brew install python3.7
 ```
+> Install virtualenv
+```
+pip install virtualenv
+```
+> Start virtualenv
+```
+virtualenv env
+```
+> Activate virtualenv
+```
+source venv/bin/activate
+```
 > Install dependencies
 ```
 $ pip install --requirement requirements.txt
@@ -68,7 +80,7 @@ For a given input CSV file with N pairs of image paths:
 - Record time taken for SSI comparison
 - Output - image1, image2, Bjorn value, elapsed comparison time
 
-# Helpful diagram
+# Helpful Diagram
 <kbd>
   <img src="https://raw.githubusercontent.com/Rixonpolvi/AutoBjorn/master/Autobjorn_explained.png">
 </kbd>
