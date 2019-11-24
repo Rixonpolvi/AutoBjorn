@@ -70,7 +70,7 @@ def read_write(args):
     completed = 0
     failures = 0
 
-    with open(args.infile, 'r') as inputcsv, open(args.outfile, 'w') as outfile:
+    with open(args.infile, 'r') as inputcsv, open(args.outfile, 'w', newline='') as outfile:
         reader = csv.reader(inputcsv, delimiter=',')
         next(reader,None)
         
