@@ -19,7 +19,7 @@ if not input_path.exists():
 test_input_absolute = input_path.parent / 'test_input_absolute.csv'
 output_path = input_path.parent / 'test_output.csv'
 
-with open(input_path, 'r') as inputcsv, open(test_input_absolute, 'w') as outputcsv:
+with open(input_path, 'r') as inputcsv, open(test_input_absolute, 'w', newline='') as outputcsv:
     reader = csv.reader(inputcsv, delimiter=',')
     next(reader, None)
     
