@@ -56,8 +56,8 @@ def compare_images(imageA, imageB):
 def load_image(path):
     if path.suffix == '.gif':
         convert_to_png = path.parent / path.stem
-        Image.open(path).save(f'{str(convert_to_png + "_tmp"}.png', 'PNG')
-        image = cv2.imread(f'{str(convert_to_png + "_tmp"}.png', 1)
+        Image.open(path).save(f'{str(convert_to_png) + "_tmp"}.png', 'PNG')
+        image = cv2.imread(f'{str(convert_to_png) + "_tmp"}.png', 1)
     else:
         image = cv2.imread(str(path), 1)
     return image 
