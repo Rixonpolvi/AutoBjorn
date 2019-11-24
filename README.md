@@ -1,9 +1,9 @@
 # AutoBjorn
 Calculate Bjorn Similarity Index Value of 2 Images
 
-### Setup
+## Setup
 
-Mac
+# Mac
 > Install python3.7
 
 ```
@@ -26,7 +26,7 @@ source venv/bin/activate
 $ pip install --requirement requirements.txt
 ```
 
-Windows
+# Windows
 > Download and install python3.7
 
 https://www.python.org/downloads/release/python-373/
@@ -70,7 +70,7 @@ $ python autoBjorn.py input.csv -o output.csv
 ```
 
 
-### Explanation
+## Explanation
 
 For a given input CSV file with N pairs of image paths:
 - Read path of each image
@@ -80,7 +80,7 @@ For a given input CSV file with N pairs of image paths:
 - Record time taken for SSI comparison
 - Output - image1, image2, Bjorn value, elapsed comparison time
 
-# Helpful Diagram
+## Helpful Diagram
 <kbd>
   <img src="https://raw.githubusercontent.com/Rixonpolvi/AutoBjorn/master/Autobjorn_explained.png">
 </kbd>
