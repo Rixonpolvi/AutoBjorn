@@ -18,7 +18,6 @@ class autobjorn(unittest.TestCase):
 
     #test compare 2 different image
     def test_diff_image(self):
-
         img1_path = Path('Examples/aa.png')
         img2_path = Path('Examples/ab.png') 
         img1 = autoBjorn.load_image(img1_path)
