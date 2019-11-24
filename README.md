@@ -68,3 +68,8 @@ For a given input CSV file with N pairs of image paths:
 - Record time taken for SSI comparison
 - Output - image1, image2, Bjorn value, elapsed comparison time
 
+# Helpful diagram
+<kbd>
+  <img src="https://raw.githubusercontent.com/Rixonpolvi/AutoBjorn/master/Autobjorn_explained.png">
+</kbd>
+
