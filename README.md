@@ -3,7 +3,7 @@ Calculate Bjorn Similarity Index Value of 2 Images
 
 ## Setup
 
-# Mac
+### Mac
 > Install python3.7
 
 ```
@@ -26,7 +26,7 @@ source venv/bin/activate
 $ pip install --requirement requirements.txt
 ```
 
-# Windows
+### Windows
 > Download and install python3.7
 
 https://www.python.org/downloads/release/python-373/
@@ -48,7 +48,7 @@ virtualenv env
 pip install -r requirements.txt
 ```
 
-### Usage
+## Usage
 Run `autoBjorn.py --help` to see this help message:
 ```
 usage: autoBjorn.py [-h] [-o OUTFILE] infile
