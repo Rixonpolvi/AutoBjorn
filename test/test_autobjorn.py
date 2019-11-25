@@ -6,7 +6,7 @@ from autobjorn import autoBjorn
 
 class autobjorn(unittest.TestCase):
         
-    #test compare an image file to itself
+    # test compare an image file to itself
     def test_same_image(self):
         img1_path = Path('Examples/aa.png')
         img2_path = img1_path
@@ -16,7 +16,7 @@ class autobjorn(unittest.TestCase):
         bsi = autoBjorn.normalize(ssi)
         assert bsi == 0, 'Should be 0'
 
-    #test compare 2 different image
+    # test compare 2 different image
     def test_diff_image(self):
         img1_path = Path('Examples/aa.png')
         img2_path = Path('Examples/ab.png') 
