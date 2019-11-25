@@ -1,21 +1,66 @@
 #!/usr/bin/env python3.7
 
-#AUTOBJORN
+# AUTOBJORN 1.0
 
 from PIL import Image
 from pathlib import Path
 from skimage import metrics
 import argparse
 import logging
+import requests
 import csv
 import time
 import cv2
 import sys
 
 
-#Arguments
-#input file
-#Optional output file
+# Get local version from CHANGES.txt
+# Get most recent version from CHANGES.txt in github
+# Compare and notify if update exists
+def check_version():
+
+    # Get local version
+    version_file = 'CHANGES.txt'
+
+    with open(version_file, 'r') as file:
+        data = file.read().split('\n')
+
+        if not data[-1]:
+            local_version = data[-2].split(',')[0]
+        else:
+            local_version = data[-1].split(',')[0]
+    
+    # Get remote version
+    url = 'https://raw.githubusercontent.com/Rixonpolvi/AutoBjorn/master/CHANGES.txt'
+
+    try:
+        r = requests.get(url)
+
+        if r.status_code == 200:
+            version_info = r.text
+            versions = version_info.split('\n')
+
+            if not versions[-1]:
+                latest_version = versions[-2].split(',')[0]
+            else:
+                latest_version = versions[-1].split(',')[0]
+            
+        else:
+            logging.info('Version check failed - remote check unsuccessful')
+
+    except requests.exceptions.HTTPError as e:
+        print(f'Version check failed - {e}')
+        logging.info(f'Version check failed - {e}')
+
+    if local_version != latest_version:
+        print(f'Update is available - {local_version} -> {latest_version}')
+        logging.info(f'Update is available - {local_version} -> {latest_version}')
+    logging.info(f'Version - {local_version}')
+
+
+# Arguments
+# input file
+# Optional output file
 def parse_arg():
     default_outfile = 'output.csv'
 
@@ -31,16 +76,17 @@ def parse_arg():
     return args
 
 
-#Structural Similarity Index (SSI)  --> -1 to 1 (Different to same)
-#Bjorn Similarity Index (BSI)       -->  0 to 1 (Same to different)
-#Normalize [-1,1] --> [1,0] and subtract from 1 to flip
-#new = 1 - (old - min/max - min)
+# Structural Similarity Index (SSI)  --> -1 to 1 (Different to same)
+# Bjorn Similarity Index (BSI)       -->  0 to 1 (Same to different)
+# Normalize [-1,1] --> [1,0] and subtract from 1 to flip
+# new = 1 - (old - min/max - min)
+# new = 1 - (old - -1/1 - -1)
 def normalize(ssi):
     return (1 - (ssi + 1) / 2)
 
 
-#Compare 2 image files
-#Return ssi value and time taken
+# Compare 2 image files
+# Return ssi value and time taken
 def compare_images(imageA, imageB):
     ssi_start = time.time()
     ssi = metrics.structural_similarity(imageA, imageB, multichannel=True)
@@ -50,9 +96,9 @@ def compare_images(imageA, imageB):
     return ssi, ssi_time
 
 
-#Load images for comparison
-#.gif not working with opencv
-#image converstion using pillow.Image
+# Load images for comparison
+# .gif not working with opencv
+# image converstion using pillow.Image
 def load_image(path):
     if path.suffix == '.gif':
         convert_to_png = path.parent / path.stem
@@ -63,9 +109,9 @@ def load_image(path):
     return image 
 
 
-#Read from args.infile
-#Write to args.outfile
-#N/A values if images do not exist on the filesystem
+# Read from args.infile
+# Write to args.outfile
+# N/A values if images do not exist on the filesystem
 def read_write(args):
     completed = 0
     failures = 0
@@ -88,7 +134,7 @@ def read_write(args):
                 ssi, elapsed_time = compare_images(image1, image2)
                 bsi = normalize(ssi)
                 
-                #For differences that are undetectable to the human eye (same image, diff format)
+                # For differences that are undetectable to the human eye (same image, diff format)
                 if bsi < 0.03:
                     bsi = 0
 
@@ -107,6 +153,7 @@ def main():
     logging.basicConfig (filename='autoBjorn.log', level=logging.INFO)
     logging.info(f'Started program - {time.time()}')
     arguments = parse_arg()
+    check_version()
     read_write(arguments)
     logging.info(f'Ended program - {time.time()}')
     print('Complete')
