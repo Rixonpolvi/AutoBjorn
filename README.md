@@ -6,6 +6,8 @@ Calculate Bjorn Similarity Index Value of 2 Images
 ### Mac
 > Install python3.7
 
+https://www.python.org/downloads/release/python-373/
+
 ```
 $ brew install python3.7
 ```
@@ -19,11 +21,11 @@ virtualenv env
 ```
 > Activate virtualenv
 ```
-source venv/bin/activate
+source env/bin/activate
 ```
 > Install dependencies
 ```
-$ pip install --requirement requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ### Windows
@@ -85,3 +87,7 @@ For a given input CSV file with N pairs of image paths:
   <img src="https://raw.githubusercontent.com/Rixonpolvi/AutoBjorn/master/Autobjorn_explained.png">
 </kbd>
 
+## Tests
+
+- test_autobjorn.py --> test_same_image and test_diff_image
+- test_run.py --> Does a full test of the application using test_input.csv and image pairs in Examples/
